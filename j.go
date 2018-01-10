@@ -1,18 +1,13 @@
 package main
 
 import (
-	"time"
+	"encoding/json"
 )
 
 func main() {
-	ticker := time.NewTicker(3 * time.Second)
+	var info map[string]string
+	j := []byte(`{"wat": "wat"}`)
 	
-	println("yo!")
-
-	for {
-		select {
-			case <- ticker.C:
-				println("hey apple!")
-		}
-	}
+	json.Unmarshal(j, &info)
+	println(info)
 }
